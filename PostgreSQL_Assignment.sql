@@ -56,3 +56,6 @@ SELECT * from sightings;
 -- Prob - 1
 INSERT INTO rangers(name, region) VALUES('Derek Fox', 'Coastal Plains');
 
+
+-- Prob - 2
+SELECT count(DISTINCT species_id) as unique_species_count  FROM sightings;
