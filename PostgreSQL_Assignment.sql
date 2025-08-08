@@ -42,7 +42,8 @@ INSERT INTO species (common_name, scientific_name, discovery_date, conservation_
 
 -- Insert data to sightings table
 INSERT INTO sightings (species_id, ranger_id, location, sighting_time, notes) VALUES
-(1, 1, 'Peak Ridge', '2024-05-10 07:45:00', 'Camera trap image captured'),
+(1, 1, 'Peak Ridge', '2024-05-05 07:45:00', 'Camera trap image captured'),
+(1, 1, 'Peak Ridge', '2024-05-10 07:40:00', 'Camera trap image captured'),
 (2, 2, 'Bankwood Area', '2024-05-12 16:20:00', 'Juvenile seen'),
 (3, 3, 'Bamboo Grove East', '2024-05-15 09:10:00', 'Feeding observed'),
 (1, 2, 'Snowfall Pass', '2024-05-18 18:30:00', NULL);
@@ -64,3 +65,8 @@ SELECT * FROM sightings WHERE location ILIKE '%Pass';
 
 -- Prob - 4
 SELECT name, count(sighting_id) as total_sightings FROM rangers JOIN sightings USING(ranger_id) GROUP BY name;
+
+-- Prob - 6
+SELECT common_name, sighting_time, name  FROM sightings JOIN rangers USING(ranger_id) JOIN species USING(species_id) ORDER BY sighting_time  DESC LIMIT 2;
+
+-- 
