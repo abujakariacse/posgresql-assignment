@@ -77,7 +77,7 @@ UPDATE species SET conservation_status = 'Historic' WHERE extract(year FROM disc
 
 -- Prob - 9 
 DELETE FROM rangers WHERE ranger_id NOT IN (SELECT DISTINCT ranger_id FROM sightings);
--- SELECT *  FROM species WHERE species_id NOT IN (SELECT DISTINCT sighting_id FROM sightings);
+
 
 
 
