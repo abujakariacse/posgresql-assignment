@@ -66,6 +66,9 @@ SELECT * FROM sightings WHERE location ILIKE '%Pass';
 -- Prob - 4
 SELECT name, count(sighting_id) as total_sightings FROM rangers JOIN sightings USING(ranger_id) GROUP BY name;
 
+-- Prob - 5
+SELECT common_name FROM species WHERE species_id NOT IN(SELECT DISTINCT species_id FROM sightings);
+
 -- Prob - 6
 SELECT common_name, sighting_time, name  FROM sightings JOIN rangers USING(ranger_id) JOIN species USING(species_id) ORDER BY sighting_time  DESC LIMIT 2;
 
@@ -74,3 +77,7 @@ UPDATE species SET conservation_status = 'Historic' WHERE extract(year FROM disc
 
 -- Prob - 9 
 DELETE FROM rangers WHERE ranger_id NOT IN (SELECT DISTINCT ranger_id FROM sightings);
+-- SELECT *  FROM species WHERE species_id NOT IN (SELECT DISTINCT sighting_id FROM sightings);
+
+
+
