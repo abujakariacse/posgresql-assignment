@@ -72,5 +72,5 @@ SELECT common_name, sighting_time, name  FROM sightings JOIN rangers USING(range
 -- Problem - 7
 UPDATE species SET conservation_status = 'Historic' WHERE extract(year FROM discovery_date) < 1800;
 
--- Prob - 9
+-- Prob - 9 
 DELETE FROM rangers WHERE ranger_id NOT IN (SELECT DISTINCT ranger_id FROM sightings);
