@@ -75,6 +75,18 @@ SELECT common_name, sighting_time, name  FROM sightings JOIN rangers USING(range
 -- Problem - 7
 UPDATE species SET conservation_status = 'Historic' WHERE extract(year FROM discovery_date) < 1800;
 
+-- Prob - 8
+SELECT
+  sighting_id,
+  CASE
+    WHEN EXTRACT(HOUR FROM sighting_time) < 12 THEN 'Morning'
+    WHEN EXTRACT(HOUR FROM sighting_time) >= 12 AND EXTRACT(HOUR FROM sighting_time) < 17 THEN 'Afternoon'
+    ELSE 'Evening'
+  END AS time_of_day
+FROM sightings
+ORDER BY sighting_id;
+
+
 -- Prob - 9 
 DELETE FROM rangers WHERE ranger_id NOT IN (SELECT DISTINCT ranger_id FROM sightings);
 
